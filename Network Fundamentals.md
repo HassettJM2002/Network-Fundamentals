@@ -1,9 +1,8 @@
 # CCTC Networking
 ##### Home for the Section https://net.cybbh.io/public/networking/latest/index.html
 ##### Day 1 Repos: https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/fg.html
-<details>
 ## Day 1 - Network Fundamentaks
-
+<Day 1>
 #### Basics
 #####
     bits -> 0 / 1, on or off
@@ -285,6 +284,6 @@
     - Increased Round Trip Time (RTT) which increases latency
     - Monitoring misdirected traffic (change in AS path from tools like Looking Glass)
 3. BGPSec
-</details>
+</Day 1>
 ## Day 2
 
