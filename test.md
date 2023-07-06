@@ -7,4 +7,10 @@
 
 normal text
 
-**bodlded word**
+**bolded word**
+_Italicised_
+~~strikethru~~
+**Specific_BoldItal_lol**
+***All Bold ital***
+<sub> epic </sub>
+<sup> epic </sup>
