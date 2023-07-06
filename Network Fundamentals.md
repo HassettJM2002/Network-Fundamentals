@@ -237,6 +237,47 @@
 
     tcpdump -r something.pcap 'i[1] & 0xFC = 4'
 ##### Cheat sheet for BPF -> https://miro.com/app/board/o9J_klSqCSY=/?share_link_id=16133753693 
-###### 
+##### Layer 2 Switching Technologies / switch Operation
+    Fast Forward -> only looks at dest mac
+    frag free -> first 64 bytes
+    store and fwd -> entire frame and fcs
+###### Cam Table
+    stores information of MAC addresses on available ports
+    Not vlans, broadcast to everything
+    With vlan, will only broadcast it to ports with associated vlan tag
+###### IEEE 802.1AD "Q and Q"
+    Double tag, can send stuff to one vlan and another vlan
+###### STP (Spanning Tree Protocol)
+    Dynamic way to open and close links as we need them
+    Root Bridge -> who has access to the router, least amount of hops
+    Once elected does this process
+    2. Identify the Root ports on non-root bridge
+    3. Identify the Designated port for each segment
+    4. Set alternate ports to blocking state
+###### Layer 2 Dis Cover Protocol
+1. Way for switches to talk to eachother
+   - CIsco Disc Prot
+     - Foundary Dic Prot
+        Link Layer Disc Prot
+###### VTP (VLAN Trunking Protocol)
+    VTP server with the revision takes over the domain and puts out vtp information
+###### Port Security
+    Modes
+        Shutdown -> shut off
+        Restrict -> restrict to port
+        Protect -> allow but log
+    We can assign mac address to a port
+    If port security is broken
+        will do either one of the three options
+##### Layer 3 Routing Technologies
+###### Routing
+    routing tables have networks associating to ports
+        network address and CIDR
+        X.X.X.X / Y
+ ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/63a3c26f-3b19-45dd-a501-c948533fe481)
+##### Lookup Proc
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/2a2bdf28-3d35-4b1c-9215-310994a1f15d)
+##### Routed vs Routing
+
 ## Day 2
 
