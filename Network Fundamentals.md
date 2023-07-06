@@ -54,11 +54,23 @@
     Byte offset, use the Offset Size, then add the 0 1 2 3
 
 #### Layer 3: Network
+##### IPv4
     Most common protocols are
         IPv4
         IPv6
     Headers for IPv4
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/f6790ed4-db2f-48c9-a1f3-71a8afc75fd3)
+
+    Bit Shift, depends on where you start in the bit, 1 will not always be 1
+    - Fragmentation: If there packets are too big, it will fragment
+        The first will have an offset of 0 with more fragement turned on
+        the last one will have an offset of X with more fragment turned off
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/7aaa29dd-ed90-438e-ae5a-5cb7a569409b)
+##### IPv6
+    Used to address the problem of running out of ip addresses
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/b747840a-dfac-45ec-a47d-a1d17cea2821)
+##### IPv4 vs IPv6
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/73f9500a-1066-4d79-9c87-358839740270)
 
 #### Layer 4: Transport
 #### Layer 5: Session
