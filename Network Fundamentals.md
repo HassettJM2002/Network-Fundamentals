@@ -75,12 +75,12 @@
 
 ###### Fingerprinting
     Different Vendors have different TTLs which can be used to tell what OS is being used
-    Linux                     64
-    Google's Cust Linux       64
-    FreeBSD                   64
-    Windows XP                128
-    Win 7                     128
-    Cisco Router              255
+        Linux                     64
+        Google's Cust Linux       64
+        FreeBSD                   64
+        Windows XP                128
+        Win 7                     128
+        Cisco Router              255
 
 ##### ICMP
     Pings are only two types of icmp ping    
