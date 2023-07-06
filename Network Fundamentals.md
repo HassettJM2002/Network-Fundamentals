@@ -108,8 +108,65 @@
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/eb0ed1fe-4ed3-44eb-9062-bc8e8520ed45)
 
 #### Layer 5: Session
-#### Layer 6: Presentation
-#### Layer 7: Application
+    SOCKs, itneract with the middle man, aka a proxy
+    NetVIOS
+    PPTP/L2TP
+    RPC
+##### SOCKS 4/5 (TCP 1080)
+##### PPTP (TCP 1723)
+##### L2TP (TCP 1701)
+    Tunneling, encapsulates it in another protocol
+##### SMB/CIFS (TCP 139/445 and UDP 137/138)
+    Share Data
+##### RPC (Any Port)
+    RPC is a request response prootocol to get information on the network
 
+#### Layer 6: Presentation
+    Responsilbe for tranlating and formating data
+    as well as Encoding, Encryption, and Compression
+    - Symmetric Encryption
+        Both have the same code
+    - Assymetric Encryption
+        Different info, tied back and used to decrypt
+#### Layer 7: Application
+    
+##### FTP (TCP 20/21)
+    - FTP : file transfer protocol used to transfer files, client server premise
+    - Servers are sockets
+###### FTP Active
+    Server is sending packet to user via port 20
+###### FTP Passive
+    FTP server waits, will send packet to port that opened by server, access port and will respond with data, its like a double request
+
+#### SSH (TCP 22)
+    Assymetric PKI for key exchange
+    Symmetric for session
+    User authentication
+    Data Stream channeling
+
+    SSH <username>@<ip address>
+    
+    1) Sends TCP connetion to IP after 3 way handshake
+    2) Then must authenticate with username and password, will try to login as the current user if none is specified
+    3) Key Exchange, will store key in ssh hosts, will store it to keep secure
+
+    - Not limited to one data stream
+##### SSH Arhictecure
+    Server
+    Client
+    Session
+    Keys
+        User Key 
+        Host Key
+        Session Key
+    Key Generator
+#### Telnet (TCP 23)
+    PLain Text
+#### SMTP (TCP 25)
+#### TACAS (TCP 49)
+    Transfer user name passwords and configartions
+#### HTTP/s (TCP 80/443)
+    Get web request to get reqeuest
+#### POP (TCP 110), IMAP (TCP 143), RDP (TCP 3389), DNS (Query/Response TCP/UDP 53), DHCP (UDP 67/68), TFTP (UDP 69), NTP (UDP 123), SNMP (UDP 161/162), 
 ## Day 2
 
