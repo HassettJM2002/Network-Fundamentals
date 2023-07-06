@@ -278,6 +278,11 @@
 ##### Lookup Proc
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/2a2bdf28-3d35-4b1c-9215-310994a1f15d)
 ##### Routed vs Routing
-
+1. IP prefix filtering
+2. BGP hijacking detection
+    - Tracking the change in TTL of incoming packets
+    - Increased Round Trip Time (RTT) which increases latency
+    - Monitoring misdirected traffic (change in AS path from tools like Looking Glass)
+3. BGPSec
 ## Day 2
 
