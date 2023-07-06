@@ -167,6 +167,14 @@
     Transfer user name passwords and configartions
 #### HTTP/s (TCP 80/443)
     Get web request to get reqeuest
-#### POP (TCP 110), IMAP (TCP 143), RDP (TCP 3389), DNS (Query/Response TCP/UDP 53), DHCP (UDP 67/68), TFTP (UDP 69), NTP (UDP 123), SNMP (UDP 161/162), 
+#### Other COmmon Application Layer Protocols 
+    POP (TCP 110)
+    IMAP (TCP 143)
+    RDP (TCP 3389)
+    DNS (Query/Response TCP/UDP 53)
+    DHCP (UDP 67/68)
+    TFTP (UDP 69)
+    NTP (UDP 123)
+    SNMP (UDP 161/162), 
 ## Day 2
 
