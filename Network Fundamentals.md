@@ -6,6 +6,7 @@
 <summary> OSI Model, Standards, Routing, TCPDUMP / Wireshark </summmary> 
 #### Basics
 #####
+    
     bits -> 0 / 1, on or off
     byte -> 8 bits -> 0 -> 255
 
