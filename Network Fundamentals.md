@@ -15,6 +15,7 @@
 
 ### OSI Model Brief Overview
 <details>
+    
     7 -> Application
         Use Transport Layer, build off of Transport Layer
     6 -> Presenetation
