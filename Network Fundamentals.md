@@ -202,6 +202,11 @@
 
     Wireshark is not very efficient
 ##### TCPDUMP
-###### CHicken
+###### to find where tcpdump is located
+    which tcpdump
+Example of how to use tcpdump
+######
+    sudo tcpdump -i ens3 not port22
+######
 ## Day 2
 
