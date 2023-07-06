@@ -14,3 +14,25 @@ _Italicised_
 ***All Bold ital***
 <sub> epic </sub>
 <sup> epic </sup>
+
+no quoting
+> quoting
+
+```
+Code Block
+```
+Lists
+`
+- one
+* two
++ three
+
+1. one
+2. two
+3. three
+
+- one
+  - two
+    - three
+
+    
