@@ -6,3 +6,5 @@
 ###### Heading 6
 
 normal text
+
+**bodlded word**
