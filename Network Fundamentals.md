@@ -94,6 +94,19 @@
 
 
 #### Layer 4: Transport
+##### TCP
+    Reliable, three way handshake, expected to be connected to certain ports which refer to applications
+    SYN -> SYN/ACK -> ACK
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/678dff3b-d767-40ee-a9c3-29d56c25d3fa)
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/360de4e0-ceb6-421c-8407-51dca75a0442)
+#####
+    Active -> the recviever is sending packets
+    Passive -> Not getting any packets back
+##### UDP
+        No three way handshake, doesn't care if some things are lost
+        Designed to get information to the otherside very quickly
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/eb0ed1fe-4ed3-44eb-9062-bc8e8520ed45)
+
 #### Layer 5: Session
 #### Layer 6: Presentation
 #### Layer 7: Application
