@@ -26,6 +26,18 @@
     2 -> Data Link: 
         Modem, physical to logical, arp and vlan info such as trunking, how info gets from one device to another
     1 -> Physical
+### Important Standards
+    Organizations such as IANA, IETF, IEEE, set standards that should be used universally
+    RFCs give write ups on the standards, to look at the source, look at the RFC
+
+### OSI Indepth Overview
+#### Layer 1: Physical Layer
+#### Layer 2: Data Link
+#### Layer 3: Network
+#### Layer 4: Transport
+#### Layer 5: Session
+#### Layer 6: Presentation
+#### Layer 7: Application
 
 ## Day 2
 
