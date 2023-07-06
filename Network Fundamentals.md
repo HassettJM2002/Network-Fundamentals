@@ -175,6 +175,21 @@
     DHCP (UDP 67/68)
     TFTP (UDP 69)
     NTP (UDP 123)
-    SNMP (UDP 161/162), 
+    SNMP (UDP 161/162)
+
+### Other Networking Stuff
+##### Network Traffic Sniffing
+    Being able to capture packets on the network
+##### Capture Library
+    Libpcacp, WinPcap, NPCAP make traffic captures possible
+    Wireshark can also be used
+    Libpcap is installed on most flavours of linux
+
+    How it works
+    NIC -> wifi adapter, pulling data off wireless, data is sent to kernel, if its not to you, it would usually drop it, but in promiscus mode, it will accept everything
+    Normally it will remove through layers, but in prosicus mode, will forward as is, raw, sends it to current user space
+##### Wireshark, TCPDUMP, and DPFS
+###### Wireshark
+
 ## Day 2
 
