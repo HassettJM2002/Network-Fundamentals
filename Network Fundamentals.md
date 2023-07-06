@@ -49,6 +49,7 @@
     VLAN: Creates a virtual LAN using the ethernet header
 
     On a local network, all that is required is an ARP Header to route packets 
+    
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/74ece6fd-ceda-48b6-8fe7-9df4dffca261)
 
 #### Layer 3: Network
