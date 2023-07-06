@@ -216,7 +216,21 @@
 ##### TCP dump if not set it will set it to default
     Write to pcap file: tcpdump -w <>.pcap
     To read the file: tcpdump -r <>.pcap
-    
+#### Can use all the commands used in BASH
+    grep, wc -l, etc
+#### Berkely Packet FIlters (BPF)
+    tcpdump {A} [B:C] {D} {E} {F} {G}
+
+    A = Protocol (ether | arp | ip | ip6 | icmp | tcp | udp)
+    B = Header Byte offset
+    C = optional: Byte Length. Can be 1, 2 or 4 (default 1)
+    D = optional: Bitwise mask (&)
+    E = Operator (= | == | > | < | <= | >= | != | () | << | >>)
+    F = Result of Expresion
+    G = optional: Logical Operator (&& ||) to bridge expressions
+
+    Example: --> find packets with IPv4, looks for packets without dest port 22 and 23
+    tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
 ######
 ## Day 2
 
