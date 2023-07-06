@@ -1,5 +1,6 @@
 # CCTC Networking
 ##### https://net.cybbh.io/public/networking/latest/index.html
+##### Day 1 Repos: https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/fg.html
 ## Day 1 - Network Fundamentaks
 
 #### Basics
