@@ -186,10 +186,20 @@
     Libpcap is installed on most flavours of linux
 
     How it works
-    NIC -> wifi adapter, pulling data off wireless, data is sent to kernel, if its not to you, it would usually drop it, but in promiscus mode, it will accept everything
+    NIC -> wifi adapter, pulling data off wireless, data is sent to kernel, if its not to you, it would usually drop it, 
+    but in promiscus mode, it will accept everything
     Normally it will remove through layers, but in prosicus mode, will forward as is, raw, sends it to current user space
 ##### Wireshark, TCPDUMP, and DPFS
 ###### Wireshark
+    Protocol Hieracrchy
+        Shows protocols and layers of the osi model
+    Conversations / Endpoints
+        Shows conversations 
+            or
+        the the endpoints of the conversations
+    Pref:
+        Prot -> TCP -> Relative Seq #
 
+    Wireshark is not very efficient
 ## Day 2
 
