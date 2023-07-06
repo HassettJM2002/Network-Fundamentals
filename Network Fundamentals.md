@@ -204,9 +204,19 @@
 ##### TCPDUMP
 ###### to find where tcpdump is located
     which tcpdump
-Example of how to use tcpdump
-######
-    sudo tcpdump -i ens3 not port22
+###### Example of how to use tcpdump
+    Read from interface
+        sudo tcpdump -i ens3 not port22
+    Verbose read
+        sudo tcpdump -i ens3 not port 22 -vv
+    Read data
+        sudo tcpdump -i ens3 not port 22 -nvv
+    tcpdump -D
+        Lists all availbe itnerfaces to capture on
+##### TCP dump if not set it will set it to default
+    Write to pcap file: tcpdump -w <>.pcap
+    To read the file: tcpdump -r <>.pcap
+    
 ######
 ## Day 2
 
