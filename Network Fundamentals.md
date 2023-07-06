@@ -52,7 +52,14 @@
     
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/74ece6fd-ceda-48b6-8fe7-9df4dffca261)
     Byte offset, use the Offset Size, then add the 0 1 2 3
+
 #### Layer 3: Network
+    Most common protocols are
+        IPv4
+        IPv6
+    Headers for IPv4
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/f6790ed4-db2f-48c9-a1f3-71a8afc75fd3)
+
 #### Layer 4: Transport
 #### Layer 5: Session
 #### Layer 6: Presentation
