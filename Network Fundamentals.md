@@ -68,9 +68,22 @@
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/7aaa29dd-ed90-438e-ae5a-5cb7a569409b)
 ##### IPv6
     Used to address the problem of running out of ip addresses
+    Used to secure it more, will stop packet injection
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/b747840a-dfac-45ec-a47d-a1d17cea2821)
 ##### IPv4 vs IPv6
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/73f9500a-1066-4d79-9c87-358839740270)
+
+###### Fingerprinting
+    Different Vendors have different TTLs which can be used to tell what OS is being used
+    Linux                     64
+    Google's Cust Linux       64
+    FreeBSD                   64
+    Windows XP                128
+    Win 7                     128
+    Cisco Router              255
+
+##### ICMP
+    Pings are only two types of icmp ping
 
 #### Layer 4: Transport
 #### Layer 5: Session
