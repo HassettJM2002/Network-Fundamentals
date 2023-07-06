@@ -85,13 +85,13 @@
 
 ##### ICMP
     Pings are only two types of icmp ping    
-##### Zero Config
+##### **Zero Config**
     Plug in device and allow to communicte with it
         IPv4
             APIPA, RFC 3927
         IPv6
             SLAAC, RFC 4862
-_adfasd_
+
 
 #### Layer 4: Transport
 #### Layer 5: Session
