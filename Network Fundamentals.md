@@ -231,6 +231,12 @@
 
     Example: --> find packets with IPv4, looks for packets without dest port 22 and 23
     tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
-######
+
+    tcpdump -r something.pcacp 'tcp[13] = 0x10' -> only ones with that set : most exclusive
+    tcpdump -r something.pccap 'tcp[13] & 0x10 = 0x10' -> will only look at that bit : most inclusive
+
+    tcpdump -r something.pcap 'i[1] & 0xFC = 4'
+##### Cheat sheet for BPF -> https://miro.com/app/board/o9J_klSqCSY=/?share_link_id=16133753693 
+###### 
 ## Day 2
 
