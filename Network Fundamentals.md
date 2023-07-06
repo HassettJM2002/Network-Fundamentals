@@ -14,6 +14,7 @@
     Base 16 (Hexidecimal) -> 0 - F  
 
 ### OSI Model Brief Overview
+<details>
     7 -> Application
         Use Transport Layer, build off of Transport Layer
     6 -> Presenetation
@@ -27,6 +28,7 @@
     2 -> Data Link: 
         Modem, physical to logical, arp and vlan info such as trunking, how info gets from one device to another
     1 -> Physical
+</details>
 ### Important Standards
     Organizations such as IANA, IETF, IEEE, set standards that should be used universally
     RFCs give write ups on the standards, to look at the source, look at the RFC
