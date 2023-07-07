@@ -376,8 +376,24 @@
     2. (AAAA) dns record, wikipedia.org
     3. (MX) mail record find, hotmail.com
     4. (AXFR) zone transfer filter dns and tcp
+### FTP
+    1. User -> student10/password10 -> port 21
+    2. follow tcp stream and find the retr DO_NOT_LOOK.txtr
+    3. find ftp-data  and then find the syn syn ack -> 
+    4. Look for 10.0.0.105 -> (X.X.X.X (t*256+z))
+### HTTP
+    1. follow the http objects and find the hostname
+    2. look at http traffic and find the moved temporarily one and thats the answer
+    3. 
+### IMAP
+    1.
+    2. look at request and fetch:[x:number of files fetched]
 ### 
 ### 
 ### 
+### 
+### 
+### 
+
 ## Day 2
 
