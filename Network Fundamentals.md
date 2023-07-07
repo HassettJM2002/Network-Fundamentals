@@ -308,8 +308,23 @@
 ### STP
     1. Root Bridge Priority look in root idenitifier, the root birdge will have a priority of 0
     2. Look for the root bridge system to get the system that is the root bridge
-###
-
+### VTP
+    1. vtp look in management domain, is cisco
+    2. Look for revision number, pick the highest and thats the latest, 11
+    3. look for vlan information and count how many are being advertised, 22
+### VLAN 
+    1. I pity the foom, ip.addr eq 11.22.33.44 and vlan, follow th esteam
+    2. Look at the vlan id for the message
+### VLAN Hopping 2
+    1. Filter on VLAN, look for double tagging, the second tag is going to be the one getting attacked, 250
+    2. look at the hex dump and the data being send, Wouldn't you like too be a Pepper Too!
+### ICMP
+    1. OS based of TTL, Prob linux ttl 64
+    2. Look at the dat between each ip and icmp, look at hex dump and the daya, Exsqueeze me?
+    3. Traceroute, look fhr the incrementing ttls
+### IP ID
+    1. look at the IP, id feild take the decimal number 46544
+    2. 
 
 ## Day 2
 
