@@ -348,7 +348,28 @@
 ### EIGRPv4
     1. EIGRP is based on the IP version, for find EGRIPv4 look for eigrp and ipv4, the intern route 192.168.4.0 / 24 is the one being advertied
     2. What is the IP protocol number used for EIGRP? look in IP, look for protocol, 88 is the number for it
-    3. 
+    3. What multicast address is used to send EIGRPv4 updates?, the multicast address is 224.0.0.10
+### EIGRPv6
+    1. Find what net is being adverted, look at the EIGRP and internal router, its the destination
+    2. What multicast address is used to send EIGRPv6 updates?, find the destination to where its senindg, ff02:a
+    3. find the autonomous sytem, it is 100
+### OSPF
+    1. What is the IP protocol number used for OSPF? -> filter ospf, look in ip section and protoc, 89
+    2. Designated router is in OSPF Hello Packets in the shortest path, 192.168.170.8
+    3. look for the destination, the muilticast
+### BGP
+    1. look for update messages, and then look for network layer reachaivblitity, find the ips with cdrs and you get 3
+    2. 10.0.0.0, 172.16.0.0, 192.168.4.0 -> just like the question above.
+    3. Find the AS of peer in, look for path attributes and aggregator and find look for the originiator
+    4. TCP 179 is used by BGP
+## Task 2
+### SMB
+    1. SMB, tcp port 445
+    2. file opened using smb, look for path: and then a file or file name, putty.exe
+### DHCp
+    1. DHCP server, look at the source and look for the DHCP server ID and look for the ID, 192.168.0.1
+    2. offered ip addrss -> 192.168.0.10 look for clinet ip address to find the one that is being offered, look for the dchp offered packet as well
+    3. DHCP Lease time -> s
 ### 
 ### 
 ### 
