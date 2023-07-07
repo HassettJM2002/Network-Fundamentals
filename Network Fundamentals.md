@@ -322,9 +322,17 @@
     1. OS based of TTL, Prob linux ttl 64
     2. Look at the dat between each ip and icmp, look at hex dump and the daya, Exsqueeze me?
     3. Traceroute, look fhr the incrementing ttls
-### IP ID
-    1. look at the IP, id feild take the decimal number 46544
-    2. 
-
+### Fragmented
+    1. look at the IP, id feild take the decimal number 46544 
+    2. look at frag offset, look at the 2nd byte and turn that to decimal to find the offset
+    3. Windows -> find how payloads are differentiated to find operating system, has abcdefg
+### ICMPv6
+    1. 128 icmpv6 request
+    2. 129 icmpv6 reply
+    3. 134 for router advertisement
+    4. Link layter address is inside ICMPv6 under link-layer address, fa:16:3e:35:21:5a
+    5. Prefix under prefix info and look for the prefix
+### HSRP
+### 
 ## Day 2
 
