@@ -332,7 +332,26 @@
     3. 134 for router advertisement
     4. Link layter address is inside ICMPv6 under link-layer address, fa:16:3e:35:21:5a
     5. Prefix under prefix info and look for the prefix
-### HSRP
+### HSRP 
+    1. virtual address under hot standy b router protocol, look for the virtual ip address, 192.168.0.1
+    2. the multicast addressed used 224.0.0.2, under ip prot, with hsrp
+    3. Look for active, then there is a coup, so whatevr is before that 192.168.0.30
+    4. look for the ctive one after the coup, it was on standby and become active after being advertise then shows hello and state active
+### VRRP
+    1. look for the destination and if its the multicast address, 224.0.0.018
+    2. Look for virt router, under the IP address and it will be that ip address.
+    3. how many are communicating via vrrp, go to endpoints, filter on display and find how mnany are using them
+### RIP
+    1. count how many there are
+    2. Look at the ip address family, possibly, but loom at the ip address it is advertising and there are two different ones
+    3. what transport layer, look at laye r4 and see what the port and if udp or tcp
+### EIGRPv4
+    1. EIGRP is based on the IP version, for find EGRIPv4 look for eigrp and ipv4, the intern route 192.168.4.0 / 24 is the one being advertied
+    2. What is the IP protocol number used for EIGRP? look in IP, look for protocol, 88 is the number for it
+    3. 
+### 
+### 
+### 
 ### 
 ## Day 2
 
