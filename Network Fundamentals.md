@@ -294,7 +294,22 @@
     1. eth.src send ff...ff
     2. eth.src = 00:1d:09:f0:92:ab
     3. eth.src = 00:1a:6b:6c:0c:cc
-    4. 
+    4. Mitm -> the ip address is at this mac address, looks very suspicious because 2 ips have the same mac, fa:16:3e:35:21:5a
+### RARP filter on eth.type eq 08035
+    1. RARP protocol -> 0x8035, request opcode 3
+    2. RARP response opcode 4
+    3. Resolved RARP, look for the target IP or the info pain
+### Grat ARP (filter on arp)
+    1. MAC of mach sending grad arp for ip
+### CDP (filter on cdp)
+    1. Look at the software version or the details pain ot get information about the version
+### LLDP ( filter on lldp )
+    1. Go indo Link Layer Disc Prot and look for system name
+### STP
+    1. Root Bridge Priority look in root idenitifier, the root birdge will have a priority of 0
+    2. Look for the root bridge system to get the system that is the root bridge
+###
+
 
 ## Day 2
 
