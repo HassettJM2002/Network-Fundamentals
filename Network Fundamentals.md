@@ -289,6 +289,12 @@
     - Increased Round Trip Time (RTT) which increases latency
     - Monitoring misdirected traffic (change in AS path from tools like Looking Glass)
 3. BGPSec
+## Task 1
+### ARP
+    1. eth.src send ff...ff
+    2. eth.src = 00:1d:09:f0:92:ab
+    3. eth.src = 00:1a:6b:6c:0c:cc
+    4. 
 
 ## Day 2
 
