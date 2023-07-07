@@ -369,8 +369,13 @@
 ### DHCp
     1. DHCP server, look at the source and look for the DHCP server ID and look for the ID, 192.168.0.1
     2. offered ip addrss -> 192.168.0.10 look for clinet ip address to find the one that is being offered, look for the dchp offered packet as well
-    3. DHCP Lease time -> s
-### 
+    3. DHCP Lease time -> in the ack or offer find the dhcp lease time: 3600
+    
+### DNS
+    1. DNS a recordm look for a HOST (A) record for a domaiinm with .com -> microsoft.com
+    2. (AAAA) dns record, wikipedia.org
+    3. (MX) mail record find, hotmail.com
+    4. (AXFR) zone transfer filter dns and tcp
 ### 
 ### 
 ### 
