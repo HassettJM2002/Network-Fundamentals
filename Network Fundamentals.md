@@ -294,6 +294,8 @@
 </details>
 
 # Task 1
+<details>
+
 ### ARP
     1. eth.src send ff...ff
     2. eth.src = 00:1d:09:f0:92:ab
@@ -392,12 +394,7 @@
 ### IMAP
     1.
     2. look at request and fetch:[x:number of files fetched]
-### 
-### 
-### 
-### 
-### 
-### 
+</details>
 
 # Day 2 - Packet Creation and Socket Programming
 <details>
