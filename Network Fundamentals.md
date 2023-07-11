@@ -552,6 +552,7 @@ student@internet-host-student-4:~$ sudo python3
 
 ```
 #### Raw TCP Packet
+
 ```python
 # For building the socket
 import socket
