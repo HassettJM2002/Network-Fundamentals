@@ -440,7 +440,7 @@ https://docs.python.org/3/library/sys.html
 
 #### Demo Create Socket
 ##### Stream
-```
+```python
 #!/bin/python3
 
 import socket
@@ -466,7 +466,7 @@ print(response,decode())
 s.close()
 ```
 ##### DGRAM
-```
+```python
 #!/bin/python3
 
 import socket
