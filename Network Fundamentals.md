@@ -439,7 +439,7 @@ Sys
 https://docs.python.org/3/library/sys.html
 
 #### Demo Create Socket
-##### Stream
+##### Stream (TCP ) ( socket.sh ) 
 ```python
 #!/bin/python3
 
@@ -465,8 +465,8 @@ print(response,decode())
 
 s.close()
 ```
-##### DGRAM
-```python
+##### DGRAM ( UDP ) ( dgramex.py )
+```python 
 #!/bin/python3
 
 import socket
@@ -494,7 +494,7 @@ print(response.decode())
      Avoid them
      Obfuscatea
      Create packet with chosne data in header fields
-### Creating Raw Packet
+### Creating Raw Packet ( raw_packet.py )
 
 ```python
 # For building the socket
@@ -551,7 +551,7 @@ s.sendto(packet, (dst_ip, 0))
 student@internet-host-student-4:~$ sudo python3
 
 ```
-#### Raw TCP Packet
+#### Raw TCP Packet ( raw_tcp.py )
 
 ```python
 # For building the socket
