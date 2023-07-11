@@ -563,15 +563,14 @@ import sys
 # for doing an array in the TCP checksum
 import array
 
-# Build a packet, for establishthing the packet structure. THis allows dire
-ct acces to the methods
+# Build a packet, for establishthing the packet structure. THis allows direct acces to the methods
 # and functions of the struct module
 # alt another way to import
 from struct import * 
 
 # Create Raw Socket
 try:
-    s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPROTO_RAW)
+    s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_RAW)
 except socket.error as msg:
     print(msg)
     sys.exit()
@@ -583,33 +582,27 @@ dst_ip = "10.3.0.2"
 
 # Lets add the IPv4 Header Info
 
-ip_ver_ihl = 69 # This is putting the decimal converstations of 0x45 for ve
-rsion and Internet Header Lenght
+ip_ver_ihl = 69 # This is putting the decimal converstations of 0x45 for version and Internet Header Lenght
 ip_tos = 0      # This combvines dscp and ecn fields
 ip_len = 0      # The kernel will fill in the actual length of the packet
 ip_id = 12345   # This sets the IP idenfication forthe packet
 ip_frag = 0     # This sets fragmentation to off
-ip_ttl = 64     # This determines the TTl of the packet when leaving the ma
-chine
-ip_proto = 6   # This sets the IP protocol to CHAOS (16) if this was 6 TCP 
-and 17 UDP additonal headers would be required
+ip_ttl = 64     # This determines the TTl of the packet when leaving the machine
+ip_proto = 6   # This sets the IP protocol to CHAOS (16) if this was 6 TCP and 17 UDP additonal headers would be required
 ip_check = 0    # The kernel will fill in the checksum for the packet
-ip_srcadd = socket.inet_aton(src_ip) # inet_aton(string) will convert an IP
- address to a 32 bit binary number
+ip_srcadd = socket.inet_aton(src_ip) # inet_aton(string) will convert an IP address to a 32 bit binary number
 ip_dstadd = socket.inet_aton(dst_ip) # same thing
 
 # combvine into one
 # "!" big endian, B = Byte H= 2 Bytes 4s = 4 Bytes
-ip_header = pack('!BBHHHBBH4s4s' , ip_ver_ihl, ip_tos, ip_len, ip_id, ip_fr
-ag, ip_ttl, ip_proto, ip_check, ip_srcadd, ip_dstadd)
+ip_header = pack('!BBHHHBBH4s4s' , ip_ver_ihl, ip_tos, ip_len, ip_id, ip_frag, ip_ttl, ip_proto, ip_check, ip_srcadd, ip_dstadd)
 
 # TCP Header Fields
 tcp_src = 54321     # Souce Port
 tcp_dst = 7777      # Dest Port
 tcp_seq = 454       # Sequence Number 
 tcp_ack_seq = 0     # TCP ack sequence number
-tcp_data_off = 5    # Data offset specifying the size of the tcp header * 4
- which is 20
+tcp_data_off = 5    # Data offset specifying the size of the tcp header * 4 which is 20
 tcp_reserve = 0     # The 3 reserve bits +ns flag in reserve field
 tcp_flags = 0       # TCP flags field before the bits are turned on
 tcp_win = 65535     # Max allowd win size, reordered to network order
@@ -629,14 +622,11 @@ tcp_urg = 0     # Urgent
 tcp_ece = 0     # explicit congestion notifcation echo
 tcp_cwr = 0     # Congestion Window Reduced
 
-# Combine the tcp flags be lfet shiftin gthe bit locations and adding the b
-its together
-tcp_flags = tcp_fin + (tcp_syn << 1) + (tcp_rst << 2) + (tcp_psh << 3) + (t
-cp << 4) + (tcp_urg << 5) + (tcp_ece << 6) + (tcp_cwr << 7)
+# Combine the tcp flags be lfet shiftin gthe bit locations and adding the bits together
+tcp_flags = tcp_fin + (tcp_syn << 1) + (tcp_rst << 2) + (tcp_psh << 3) + (tcp_ack << 4) + (tcp_urg << 5) + (tcp_ece << 6) + (tcp_cwr << 7)
 
 # This ! in the pack format string means network order
-tcp_hdr = pack('!HHLLBBHHH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_of
-f_res, tcp_flags, tcp_win, tcp_chk, tcp_urg_ptr)
+tcp_hdr = pack('!HHLLBBHHH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_off_res, tcp_flags, tcp_win, tcp_chk, tcp_urg_ptr)
 #B = 1 Bytem H = 2 Bytes, L = 4 Bytes (int)
 
 user_data = b'Hello! Is this Hidden?'
@@ -649,8 +639,7 @@ protocol = socket.IPPROTO_TCP
 tcp_length = len(tcp_hdr) + len(user_data)
 
 # Pack the psuedo header and comvine with user data 
-ps_hdr = pack('!4s4sBBH', src_address, dst_address, reserved, protocol, tcp
-_length)
+ps_hdr = pack('!4s4sBBH', src_address, dst_address, reserved, protocol, tcp_length)
 ps_hdr = ps_hdr + tcp_hdr + user_data
 
 def checksum(data):
@@ -663,18 +652,12 @@ def checksum(data):
 
 tcp_chk = checksum(ps_hdr)
 
-# Pack the TCP Header to fill in the correct checksum - remember checksum i
-s NOt in network byte order
-tcp_hdr = pack('!HHLLBBH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_off_
-res, tcp_flags, tcp_win) + pack('H', tcp_chk) + pack('!H', tcp_urg_tpr)
+# Pack the TCP Header to fill in the correct checksum - remember checksum is NOt in network byte order
+tcp_hdr = pack('!HHLLBBH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_off_res, tcp_flags, tcp_win) + pack('H', tcp_chk) + pack('!H', tcp_urg_ptr)
 
 # Combine all of the headers and the user data
 packet = ip_header + tcp_hdr + user_data
 
-
-
-
-packet = ip_header + message
 
 # Send the packet
 s.sendto(packet, (dst_ip, 0))
