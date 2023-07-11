@@ -398,6 +398,7 @@
 
 # Day 2 - Packet Creation and Socket Programming
 <details>
+    
 #### Socket Types
     Stram Sockets - TCP
     Datagram Sockets - UDP
@@ -669,4 +670,20 @@ s.sendto(packet, (dst_ip, 0))
     Encoding -> convert them to cipher
     decode -> revserse convesation process
     Common schemes UTF-8, Base64, Hex
+</details>
+
+## Task 2
+<details>
+
+### Socket Creatio0n and Packet Manipulation
+    1. Address Families
+        1. socket.AF_UNIX
+        2. socket.AF_INET
+        3. socket.AF_INET6
+    2. Connections
+        1. socket.connect()
+        2. socket.close()
+    3. Header Preparation
+        1. m
+    
 </details>
