@@ -663,5 +663,7 @@ packet = ip_header + tcp_hdr + user_data
 s.sendto(packet, (dst_ip, 0))
 
 ```
-        
-
+#### Encoding and Decoding       
+    Encoding -> convert them to cipher
+    decode -> revserse convesation process
+    Common schemes UTF-8, Base64, Hex
