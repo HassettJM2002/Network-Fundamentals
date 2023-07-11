@@ -439,7 +439,7 @@ Sys
 https://docs.python.org/3/library/sys.html
 
 #### Demo Create Socket
-##### Stream (TCP ) ( socket.sh ) 
+##### Stream ( TCP ) ( socket.sh ) ( to recieve message: echo "message" | nc -lp 34567 )
 ```python
 #!/bin/python3
 
