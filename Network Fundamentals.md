@@ -395,5 +395,98 @@
 ### 
 ### 
 
-## Day 2
+## Day 2 - Packet Creation and Socket Programming
+#### Socket Types
+    Stram Sockets - TCP
+    Datagram Sockets - UDP
+    Raw Sockets - IPv4,IPv6, custom create your own packet
+#### User Space bs Kernel Space Socket
+1. User Spack Sockets
+2.     Stream
+3.     datagram
+4. Kernel Space Sockets
+5.     raw
+#### Socket Creation and Priv Level
+##### User space
+    Most common, do actions on behalf of other user applications
+##### Kernel Space Sockets
+    Attempts to access hardware directly on behalf of user app to preven encaps/decaps or create 
+    packets from scratch, needs to be elevated
+##### Usr Space apps/sockets
+    1.  TCP dump / wireshark to read file
+    2. nmap no switch
+    3. netcat to connect to listner
+    4. netcate to create listner above 1024
+    5. /dev/tcp /dev/udp to transmit data
+##### Kernel Space 
+
+### Python Terms
+    Libraries - not installed with python, imported, imports modules
+        modules - funcs, excepts, contstants, objects, types
+### Network Programming with pyth 3
+    import socket 
+##### Socket.socket function
+    socket.socket([*family*[,*type*[*proto*]]])
+    family constants should be: AF_INET (default), AF_INET6, AF_UNIX
+    type constants should be: SOCK_STREAM (default), SOCK_DGRAM, SOCK_RAW
+    proto constants should be: 0 (default), IPPROTO_RAW
+##### Librries
+Socket
+https://docs.python.org/3/library/socket.html
+Struct
+https://docs.python.org/3/library/struct.html
+Sys
+https://docs.python.org/3/library/sys.html
+
+#### Demo Create Socket
+##### Stream
+```
+#!/bin/python3
+
+import socket
+# socketcan be used by creating socket.socket()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+ipaddr = '127.0.0.1'
+port = 54321
+
+s.connect((ipaddr, port))
+
+# to send a string as a bytes-like object, add the prefix b to string. \n is ued to go to the next line (eg hit enter)
+
+s.send(b'Hello\n')
+
+# it is recommended to the buffersize used recv is power of 2 and not very large number of bits
+
+response, conn = s.recvfrom(1024)
+
+# In order to recieve a message, that is sedn as bytes like object you must decode into utf-8 ( default)
+print(response,decode())
+
+s.close()
+```
+##### DGRAM
+```
+#!/bin/python3
+
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+ipaddr = '127.0.0.1'
+port = 54321
+
+# send string as bytes like object add the prefix b to string. \n is
+# to go to the  next line
+
+s.sendto(b'Hello\n', (ipaddr,port))
+
+#recommended buffersize used wtih recvfrom is a power of 2 and not large
+response, conn = s.recvfrom(1024)
+
+#decode defaults utf-8
+print(response.decode())
+```
+
+
+        
 
