@@ -2,6 +2,7 @@
 ##### Home for the Section https://net.cybbh.io/public/networking/latest/index.html
 ##### Day 1 Repos: https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/fg.html
 ## Day 1 - Network Fundamentaks
+<details>
 #### JOHA-M-005
 
 #### Basics
@@ -289,7 +290,8 @@
     - Increased Round Trip Time (RTT) which increases latency
     - Monitoring misdirected traffic (change in AS path from tools like Looking Glass)
 3. BGPSec
-## Task 1
+</details>
+# Task 1
 ### ARP
     1. eth.src send ff...ff
     2. eth.src = 00:1d:09:f0:92:ab
@@ -395,7 +397,8 @@
 ### 
 ### 
 
-## Day 2 - Packet Creation and Socket Programming
+# Day 2 - Packet Creation and Socket Programming
+<details>
 #### Socket Types
     Stram Sockets - TCP
     Datagram Sockets - UDP
@@ -667,3 +670,4 @@ s.sendto(packet, (dst_ip, 0))
     Encoding -> convert them to cipher
     decode -> revserse convesation process
     Common schemes UTF-8, Base64, Hex
+</details>
