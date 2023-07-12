@@ -687,3 +687,193 @@ s.sendto(packet, (dst_ip, 0))
         1. m
     
 </details>
+
+## Day 2
+<details>
+
+#### Reconnaissance
+
+#### Over Arching Concepts
+
+##### Passive Reconaisance
+	Gathering info without direct interation
+	
+	command 'whois <domain>'
+	command example: 'whois google.com'
+	
+	command 'dig @<dnsserver> <A/AXFR/MX> <domain>'
+	command 'dig <domain>' -> will give information about the ip address, info about type of service, ips
+	
+	command example: 'dig google.com'
+	command example: 'dig @ns1.google.com AXFR google.com'
+	command example: 'dig @<dns> A/AAAA/MX/SOA/TXT google.com
+	
+	Practice Example to Use for Dig
+	dig @nsztml.digi.ninka AXFR zonetransfer.me
+	
+##### Ways to Do stuff
+	wayback machine, take snapshot of website and the stuff about the website, whats changed
+	
+	Google Searches
+		Subdomains
+			In google search: site:<domain> <command>
+			Examples:
+				site:ccboe.net intext."@ccboe.net" -> look if you can write emails to them
+				site:google.com filetype:pdf "policy" "password"	
+	Google Dorking "Cheat Sheet"
+
+##### SHODAN
+	Database, crawls web, find publicly avilable hosts that are vulnerable
+##### whatsmyname.app
+	social engineering tool
+
+#### Network Scanning
+	Strategies
+		-Remote to local, local to remote, local to local, remote to remote
+
+	Approach
+		Aim
+			wide range scan
+			target scan
+		Method
+			 Single Source Scan
+			 Distributed Scan
+	Types of Scanning
+		-Broadcast / Ping Sweep
+		-SCANS
+			ARP, SYN, Full connect, Fin, XmAS, UDP, idle (zombie)
+			ACK/Win Scan
+			RPC, FTP, decoy, OS fingerprint, version, Protocol Ping, Disovery Probes
+
+```
+#!/bin/bash
+echo "Enter network address (e.g. 192.168.0): "
+read net
+echo "Enter starting host range (e.g. 1): "
+read start
+echo "Enter ending host range (e.g. 254): "
+read end
+echo "Enter ports space-delimited (e.g. 21-23 80): "
+read ports
+for ((i=$start; $i<=$end; i++))
+do
+    nc -nvzw1 $net.$i $ports 2>&1 | grep -E 'succ|open'
+done
+# (-v) running verbosely (-v on Linux, -vv on Windows),
+# (-n) not resolving names. numeric only IP(no D.S)
+# (-z) without sending any data. zero-I/O mode(used for scanning)
+#(-w1) waiting no more than 1second for a connection to occur
+# (2>&1) redirect STDERR to STDOUT. Results of scan are errors and need to redirect to output to grep
+# (-E) Interpret PATTERN as an extended regular expression
+# ( | grep open) for Debian to display only open connections
+# ( | grep succeeded) for Ubuntu to display only the open connections
+```
+
+10.50 -> environment is a floating IP address, public IP address, hosts that need to communicate with a lot of other hosts
+have the ip address
+
+### Scanning Script Examples
+	Example 1
+		Enter network address (e.g. 192.168.0): 
+		10.50.30
+		Enter starting host range (e.g. 1): 
+		212
+		Enter ending host range (e.g. 254): 
+		212
+		Enter ports space-delimited (e.g. 21-23 80): 
+		21-23 80
+		(UNKNOWN) [10.50.30.212] 22 (ssh) open
+		(UNKNOWN) [10.50.30.212] 21 (ftp) open
+		(UNKNOWN) [10.50.30.212] 80 (http) open
+		student@internet-host-student-4:~$ nc 10.50.30.212 21
+		220 ProFTPD Server (Debian) [::ffff:10.0.0.101]
+		student@internet-host-student-4:~$ nc 10.50.30.212 23
+		(UNKNOWN) [10.50.30.212] 23 (telnet) : Connection refused
+		student@internet-host-student-4:~$ nc 10.50.30.212 80
+		GET /
+		<html>
+		<a href="./web.png">web.png</a>
+		</html>
+	Example2
+		student@internet-host-student-4:~$ ./scan.sh 
+		Enter network address (e.g. 192.168.0): 
+		10.50.30
+		Enter starting host range (e.g. 1): 
+		212
+		Enter ending host range (e.g. 254): 
+		212
+		Enter ports space-delimited (e.g. 21-23 80): 
+		1-1023
+		(UNKNOWN) [10.50.30.212] 443 (https) open
+		(UNKNOWN) [10.50.30.212] 80 (http) open
+		(UNKNOWN) [10.50.30.212] 25 (smtp) open
+		(UNKNOWN) [10.50.30.212] 22 (ssh) open
+		(UNKNOWN) [10.50.30.212] 21 (ftp) open
+		student@internet-host-student-4:~$ nc 10.50.30.212 25
+		SSH-2.0-OpenSSH_7.9p1 Debian-10+deb10u2
+		^C
+		student@internet-host-student-4:~$ nc 10.50.30.212 443
+
+		As you are starting to notice, not all ports are hosting the services they would normally.
+
+#### nmap -A -T4
+	nmap -A -T4 --min-rate 10000 -vvvv 10.50.30.212,<ip> -p <port,port2,port-range> -> be default scans the top 1000 most commonly used ports
+	
+#### FTP Server
+		wget -r ftp://10.50.30.212
+			-r -> recuruse
+			command downloads to host
+			cant connect to the private ip adrress on the inside
+			
+		--2023-07-12 14:09:43--  ftp://10.50.30.212/
+			   => ‘10.50.30.212/.listing’
+		Connecting to 10.50.30.212:21... connected.
+		Logging in as anonymous ... Logged in!
+		==> SYST ... done.    ==> PWD ... done.
+		==> TYPE I ... done.  ==> CWD not needed.
+		
+#### Web sever
+		wget -r 10.50.30.212
+		student@internet-host-student-4:~$ ls 
+		10.50.30.212
+		ls 10.50.30.212/
+		index.html  web.png
+		student@internet-host-student-4:~$ cat 10.50.30.212/index.html 
+		<html>
+		<a href="./web.png">web.png</a>
+		</html>
+		student@internet-host-student-4:~$ eom 10.50.30.212/web.png 
+
+	 Web Server Altnate Port
+		wget -r ftp://10.50.30.212:<PORT>
+
+#### SSH
+	ssh bob@10.50.30.212 -p 25
+	important commands for network related info
+		ip addr
+			command gives info on the port and address
+		ip neigh 
+			arp information
+		ip route
+			default gateway
+			routing information
+		ss -ntulp
+			replaces netstat
+	Random Important commands
+		sudo -l : lists what you can sudo
+	ls /usr/share/ctcc
+	Important Files
+		/etc/services
+		/etc/hosts -> dns host records
+	
+	Important commands
+		hostname
+		hostname -f (FQDN) tells the domain that the current user is in
+	
+	To Capture All Packets
+		Promiscious mode
+	
+	Dont Worry About Saving the Network maps
+	
+		
+</details>
