@@ -877,3 +877,17 @@ have the ip address
 	
 		
 </details>
+## Task 3 - Network Recon
+<details>
+
+### Enumeration
+
+	from internet-host
+ 		ssh vyos@172.16.120.1
+   		dig TXT networking-ctfd-1.server.vta
+     			FLAG: cmVhZHlfc2V0X3NjYW4= -> Ready Set Scan
+
+  	from vyos 172.16.120.1
+   		Hostname: RED-SCR
+ 
+</details>
