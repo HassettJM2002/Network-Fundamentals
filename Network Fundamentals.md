@@ -892,3 +892,80 @@ have the ip address
    		Hostname: RED-SCR
  
 </details>
+## Data Transfer
+<details>
+
+### Data Tranfering Protocols
+	1. TFTP
+    	2. FTP
+     	   -Active
+       	   -Passive
+	3. SFTP
+	4. SCP
+
+#### TFTP
+ 	Trivial
+  	UDP port 69
+   	Desc: small and simple, no terminal comms, 
+    	Encrpy: insecure, used often for tech such as BOOTP and PXE
+#### FTP
+	File Tranfer
+ 	TCP Port 20/21
+  	Encryp: none, insecure
+   	Interactive Terminal
+
+ 	Active vs Passsive FTP
+  		Pizza Deliverd vs Picking Up Pizza
+##### 	Active FTP (Pizza Delivered)
+	Client comms with sever, I want this file
+ 	Server from port 20, send traffic to random high port on client
+  	If firewall is in place, cant get delivered
+
+##### 	Passive FTP (Pizza Pickup)
+	I want file
+ 	on random high port, client picks up from port, go get file
+  	
+#### SFTP
+	SSH FTP
+ 	TCP Port 22
+  	Encrypted
+   	Symmetric and asymmetric encryption, functions like ftp but only goes over port 22
+    	FTP over SSH
+     	Interactive terminal
+
+### FTPS
+	FTP Secure
+ 	Adds SSL/TLS to ftp
+  	TCP Port 443
+   	Aithneticaion wi username / password
+    	Interactive terminal access
+     	Implicit: Connection Encrypted at all times
+     		Port 999 Control
+      		Port 989 Data
+       	Explicit Port 21, specifcy secure or insecure connection
+
+#### FTP Demo
+	ftp 10.0.0.33
+ 	Anonyomous
+	ftp <ip>
+ 	commands
+  		help
+    		lcd / -> local dir is / on local computer
+      		get <file> : get file from the ftp server
+		put <file> : put file on the ftp sercer
+
+#### SCP
+	Secure Copy Protocol
+ 	TCP port 22
+  	Syymetric and asymmetric encryption, non interactive, auth through sign in
+
+    	Syntax:
+     		scp [-r "recurse"] [-P <port>] <source> <destination> 
+	Example:
+ 		scp <local/file> <ip:dest> : local
+   		scp <ip:dest> <local/file> : dest
+	
+	3 Way SCP
+ 	scp -3 <source> <dest> : for three way if someone doesnt have auth to another
+ 
+</details>
