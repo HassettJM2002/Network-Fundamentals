@@ -967,5 +967,80 @@ have the ip address
 	
 	3 Way SCP
  	scp -3 <source> <dest> : for three way if someone doesnt have auth to another
- 
+
+##### Demo
+	IHOST: talk with both
+ 	Toby-Host: cant talk w claire
+  	Claire-Host: cant talk w toby
+
+ 	From Host to Remote
+   	Ihost> scp test.txt toby@toby-host: ": is home dir to user"
+    	Ihost> scp test.txt toby@toby-host:files/ ":files/dir"
+     	Ihost> scp test.txt toby@toby-host:/opt "abs path"
+      	Ihost> scp -P 2222 test.txt claire@claire-host:files/ ":, home dir"
+       	Ihost> scp -r -P 2222 /etc/ssh claire@claire-host:sshconfigs 
+
+ 	From Remote to Host
+  	Ihost> scp toby@toby-host:.bash_profile . "dest of . put is in our home dir"
+
+    	From Remote to Remote (not auth) 3 way
+     	Ihost> scp -3 -r claire@claire-host:/etc/ssh toby@toby-host:sshconfigs/
+
+#### SCP (Tunnel)
+		ssh student@172.16.82.106 -L 1111:localhost:22 -NT
+ 		scp -P 1111 student@localhost:secretstuff.txt /home/student
+
+	Upload a file to a remote directory from a local directory
+
+		scp -P 1111 secretstuff.txt student@localhost:/home/student
+
+
+#### NC
+	Used for banner grapping, port scanning
+ 	altnerate uses, chat server
+
+###### Two Way listner
+   	nc can function as a client or a server,
+    	Need to have listner first
+
+     	john> nc -lp 2222
+
+       	student> nc <johnip> 2222
+
+ 	Can have convo to each host
+
+###### Send contents of a file
+	nc <remoteip> <port> < file
+ 	nc -l -p 2222 > file 
+###### Edite File no perm to
+	sudo vim -> allow to do anything, can also run commands
+ 	EDITOR=/usr/bin/vim
+  	sudoedit 
+	nc -lp 2222 -e /bin/bash gives shell
+
+ 	sudo vim
+  	nc -lp 2222 -e /bin/bash
+
+   	nc <ip> <port>
+    	priv escalation
+#### Netcat relay (2 dist ends than talk, middle can)
+	two types of pipes, named and unamed
+	named pip used for unrelated process, to share data
+
+ 	mknod mypipe p -> make named pipe
+  	mcfifo my pipe -> make named pipe
+   	ls -l -> see file that is my pipe, file pipe and shows its a pipe
+
+ 	All needs is client and listner on either side
+     	nc -lp 3333 0<mypipe | nc -lp 3334 1>mypipe
+
+      	one side
+       	nc 10.10.0.40 3333
+
+ 	other side
+  	nc 10.10.0.40 3334 
+####  File Tranfer via /DEV/TCP
+	/dev/tcp/<ip>/<port>
+	
+
 </details>
