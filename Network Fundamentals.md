@@ -1186,9 +1186,37 @@ John will send to that loopback:3443
  	Ihost> ssh -p 17200 john@127.0.0.1
   	Jhost> ssh -p 18299 carlton@127.0.0.1
    	Chost(ssh)>
+
+    	ihost> ssh -p 17200 john@127.0.0.1 -L 17202:127.0.0.1:17299 -NT 
+     	ihost> ssh -p 17202 carlton@127.0.0.1
   	
-  		
-   	
+### Dynamic Port Forwarding
+It is just for TCP Traffic, no udp or icmp
+Must be SSH Port, cannot tunnel on non ssh ports
+
+   	Proxychain defualt port is 9050
+	Ihost> ssh -p 17202 carlton@127.0.0.1 -D 9050 -NT
+	Ihost> proxychains wget -r jez-host
+ 				/
+	 Ihost> proxychains telnet/ssh
+ proxychains./scan.sh -> nmap/wget/ftp
  
+ Whatever run through proxychain is coming out of carstlon
+ Using Proxychains, can scan hosts, obfuscation
+ 	
+</details>
+
+### Task 2 
+<details>
+
+### Task 2
+
+ 	5. C
+  	6. A. ssh -L 1111:localhost:22 cctc@10.50.1.150 -NT 
+   	7. B. ssh cctc@10.50.1.150 -L 1111:localhost:80 -NT 
+	8. D
+ 	9. C
+  	10. B
+   	11. 
  
 </details>
