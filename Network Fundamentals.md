@@ -3,7 +3,8 @@
 ##### Day 1 Repos: https://net.cybbh.io/public/networking/latest/lesson-1-fundamentals/fg.html
 ## Day 1 - Network Fundamentaks
 <details>
-    
+    ssh student@10.50.37.90 -X
+	tmerminator
 #### JOHA-M-005
 
 #### Basics
