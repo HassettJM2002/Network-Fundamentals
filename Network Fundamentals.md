@@ -1069,3 +1069,100 @@ have the ip address
 </details>
 
 </details>
+
+# Lesson 4 - Data Transfer, Movement, and Redirection
+
+<details>
+
+## SSH
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/5390a5c2-52f9-4c8c-891c-68e1d0b754a2)
+
+ 	Secure Shell
+  	File Locations
+   		cd ~/.ssh -> has known keys and authorizaions
+    			authorized_keys -> dont have to enter password
+      			known_hosts -> base64 encoded, is the servers that have logged into in the past 
+		/etc/ssh
+  	Two types of encryption with SSH
+   		Initial is Assymetric
+     		Shared Session to Encrypt data is symmetric
+
+## Port Forwarding ( Local and Remote )
+	Only thing changes, is where the port is opening from 
+	
+### Local
+##### Syntax
+ 	ssh -p <optional alt port> <user>@<hostname/ip> -L <local-port>:<tgthostname-ip>:<tgt port>
+	ssh -L <local,port>:<tgt:hostname-ip>:<tgt port> -p <alt port> <user>@<pivot ip> -NT
+##### Local Port Forward Demo
+
+Port Range : 17200 - 17299
+ 
+Opened port is local to the host
+Traffic is being forwarded to toby host
+Map it, draw opened port, what host:what port is forwarding traffic to
+Test Port Forward
+
+###### Demo 1 -> Traffic through another
+ 	ihost> ssh toby@tobyhost -L 17200:127.0.0.1:80   
+  	ihost> wget -r 127.0.0.1:17200
+
+###### Demo 2 -> Forward Traffic To John Host
+	ihost> ssh toby@toby-host -L 17201:john-host ip:1111
+	ihost> ssh -p 17200 john@127.0.0.1
+ 	Jhost> 
+ 
+	SSH Local Port Forwarding
+
+ 
+	    Creates a local port (1111) on the local host that forwards to a target machine’s port 80.
+	
+	ssh student@172.16.82.106 -L 1111:localhost:80 -NT
+	
+	or
+	
+	ssh -L 1111:localhost:80 student@172.16.82.106 -NT
+	
+	SSH Local Port Forwarding Through a Local Port
+	
+	Internet Host:
+	ssh student@172.16.1.15 -L 1111:172.16.40.10:22 -NT
+	ssh student@localhost -p 1111 -L 2222:172.16.82.106:80 -NT
+	firefox localhost:2222
+	
+	    Creates an additional local port on the local host that forwards to a target machine through the previous channel created.
+	
+	SSH Dynamic Port Forwarding
+	
+	    Syntax
+	
+	ssh -D <port> -p <alt port> <user>@<pivot ip> -NT
+	
+	    Proxychains default port is 9050
+	
+	    Creates a dynamic socks4 proxy that interacts alone, or with a previously established remote or local port forward.
+	
+	    Allows the use of scripts and other userspace programs through the tunnel.
+	
+	SSH Dynamic Port Forwarding 1-Step
+	
+	Blue Private Host-1:
+	ssh student@172.16.82.106 -D 9050 -NT
+	
+	proxychains ./scan.sh
+	proxychains ssh student@10.10.0.40
+	
+	SSH Local and Dynamic Practice
+	7.1
+	SSH Local Port ForwardingSyntaxssh -p <optional alt port> <user>@<pivot ip> -L <local bind port>:<tgt ip>:<tgt port> -NT
+	or 
+	ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<pivot ip> -NT
+
+ 
+### Remote
+
+  		
+   	
+ 
+ 
+</details>
