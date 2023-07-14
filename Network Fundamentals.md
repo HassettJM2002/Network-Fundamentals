@@ -1176,8 +1176,16 @@ Not just use wget, so can use firefox
 	ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<pivot ip> -NT
 
  
-### Remote
+### Remote Port Forwardidng
+Who local host is changes, at all times, have to start at port forward
+Asks the remote host to open 17299 on john
+John will send to that loopback:3443  
 
+	Chost(telnet)> ssh -p 1111 john@john-host -R 17299:1270.0.1:3443 -NT
+ 	Ihost> ssh -p 17200 john@127.0.0.1
+  	Jhost> ssh -p 18299 carlton@127.0.0.1
+   	Chost(ssh)>
+  	
   		
    	
  
