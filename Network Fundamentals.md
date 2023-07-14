@@ -1142,6 +1142,9 @@ if you reuse port will cause problem
 	Internet Host:
 	ssh student@172.16.1.15 -L 1111:172.16.40.10:22 -NT
 	ssh student@localhost -p 1111 -L 2222:172.16.82.106:80 -NT
+#### Web Sevice
+Not just use wget, so can use firefox
+
 	firefox localhost:2222
 	
 	    Creates an additional local port on the local host that forwards to a target machine through the previous channel created.
