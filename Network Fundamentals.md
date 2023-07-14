@@ -1102,6 +1102,7 @@ Opened port is local to the host
 Traffic is being forwarded to toby host
 Map it, draw opened port, what host:what port is forwarding traffic to
 Test Port Forward
+Put -NT non interactive to make sure it doesnt get fuckkeddd up
 
 ###### Demo 1 -> Traffic through another
  	ihost> ssh toby@tobyhost -L 17200:127.0.0.1:80   
@@ -1124,7 +1125,20 @@ Test Port Forward
 	ssh -L 1111:localhost:80 student@172.16.82.106 -NT
 	
 	SSH Local Port Forwarding Through a Local Port
-	
+
+###### Demo 3
+if you reuse port will cause problem
+
+ 	ssh john@10.50.23.66 -L 17200:10.0.0.103:80 -NT
+ 	ssh john@10.50.23.66 -L 172090:10.0.0.103:22 -NT
+  	
+   	wget -r 17200:1270.0.0.1
+   	ssh -p 17200 mike@127.0.0.1
+
+	ssh john@10.50.23.66 -L 17200:127.0.0.1:22 -NT
+ 	
+     
+###### Slide Demo
 	Internet Host:
 	ssh student@172.16.1.15 -L 1111:172.16.40.10:22 -NT
 	ssh student@localhost -p 1111 -L 2222:172.16.82.106:80 -NT
