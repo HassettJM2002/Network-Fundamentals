@@ -1220,3 +1220,6 @@ Must be SSH Port, cannot tunnel on non ssh ports
    	11. 
  
 </details>
+
+# NEED THIS SCAN!
+nmap -sT -T4 --min-rate 100000
