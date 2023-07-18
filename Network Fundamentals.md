@@ -1269,4 +1269,16 @@ tcpdump -X icmp
 	Data is not always going to be in plain text
 
  </details>
- 
+
+ # Task 4
+  <details> 
+
+	1-3. find ip addresses, find hosts, sudo tcpdump -r attack_analysis1.pcap | awk '{print $3,$5}' | egrep -o "((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9][0-9]|[0-9])\.){1,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9][0-9]|[0-9])" | sort -n | uniq
+
+ 	4. find transport layer protocols
+  		sudo tcpdump -r attack_analysis1.pcap "ip[9] =0x11 " | wc -l
+	6. GPRS
+ 	7. 
+    
+  
+  </details>
