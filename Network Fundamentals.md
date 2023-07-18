@@ -1224,3 +1224,49 @@ Must be SSH Port, cannot tunnel on non ssh ports
 # NEED THIS SCAN!
 nmap -sT -T4 --min-rate 100000
 tcpdump -X icmp
+
+# Network Analysis ( July 8th )
+
+<details>
+
+## Passive
+	Just looking at normal traffic and finding out whats going on
+### p0f
+	which p0f
+ 	sudo /etc/p0f/p0f.fp which looks at traffic and analysizes it
+  	can find os and what routers are being used
+## Network Traffic Baselining
+	Snapshot what looks like at a time frame
+ 	7 days to establish snapshot
+	- Networks are dynamic, got ot find baseline to find normalzies
+	- Find protocols that are allowed the network
+
+## TCP and Wireshark
+### For NMAP SCAN
+	sudo tcpdump -r <file> "tcp[13] = 0x02"
+	Find IPS 
+ 		sudo tcpdump -r <file> "tcp[13] = 0x02" | awk '{print $3}' | cut -d. =f1,2,3,4 | sort | uniq -c
+   	Find Ports 
+    		sudo tcpdump -r <file> "tcp[13] = 0x02" | awk '{print $5}' | cut -d. =f1,2,3,4 | sort | uniq -c
+### Network Data Types
+	There are different kinds of data
+ 	Full, Session, Alerts and Logs
+## Data Collection Devies
+	Sensors in line or passive
+## Data Collection	
+	TAP capturing, SPAN rotuing switch and software dupliction, can lose packets, MiTM 
+## Anomaly Detection
+	Indicator of Attack
+ 		Proactive, find sus activities, find intent
+   	Indicator of Compramise
+    		Reactive, forensic evidence, info can change
+### Indicators
+	.exe, NOP sled, sigs, traffic
+ 	Scans, DMZs, Malware Reinfection
+  	Reinfection -> someones probably network
+   	Unsual traffic
+### Decode
+	Data is not always going to be in plain text
+
+ </details>
+ 
