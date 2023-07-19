@@ -1397,13 +1397,20 @@ nft list table [family] [table] [-a]
 
     nft delete rule [family] [table] [chain] [handle <handle>]
 
-sudo nft add chain <family> 
-sudo nft add chain ip Wev INput { type filter hook input priority 0}; policy accept\; }
-sudo nft add chain ip Wev OUTput { type filter hook output priority 0}; policy accept\; }
+	sudo nft add chain <family> 
+	sudo nft add chain ip Wev INput { type filter hook input priority 0\; policy accept\; }
+	sudo nft add chain ip Wev OUTput { type filter hook output priority 0\; policy accept\; }
+	
+	sudo nft add rule ip Wev INput tcp dport 22 accept
+	sudo nft add rule ip Wev INput tcp sport 22 accept
+	sudo nft add rule ip Wev OUTput tcp sport { 21,22,23,80 } accept
+	sudo nft add rule ip Wev INput tcp dport { 6010,6011,6012 } accept
+	sudo nft add rule ip Wev OUTput tcp sport { 6010,6011,6012 } accept
 
-sudo nft add rule ip Wev INput tcp dport 22 accept
-sudo nft add rule ip Wev INput tcp sport 22 accept
-
+accept before flush
+	sudo nft add chain ip Wev { type filter hook input priority 0\; policy accept\; }
+	sudo nft flush ruleset, sudo nft flush table ip Wev
+	sudo nft list ruleset 
 ```
 
 </details>
