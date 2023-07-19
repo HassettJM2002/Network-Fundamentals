@@ -1360,6 +1360,46 @@ Allow X11 Forwarding (Terminator)
 	sudo iptables -A INPUT -p tcp -m multiport --ports 6010,6011,6012 -j ACCEPT
 	sudo iptables -A OUTPUT -p tcp -m multiport --ports 6010,6011,6012 -j ACCEPT
 
-	
+See Line Numbers
+	sudo iptables -L -n --line-numbers
+
+PING
+	sudo iptables -A INPUT -p ICMP --icmp-type <code> -j ACCEPT
+
+Delete Rule
+	sudo iptables -D INPIT <rule number>, list is dynamic
+
+	sudo iptables -P (policy) <chain> <action>
 ```
+## NFT
+
+```shell
+nft add table [family] [table]
+
+[family] = ip, ip6, inet, arp, bridge and netdev.
+
+[table] = user provided name for the table.
+nft list table [family] [table] [-a]
+
+    Adds after position
+
+    nft add rule [family] [table] [chain] [position <position>] [matches (matches)] [statement]
+
+    Inserts before position
+
+    nft insert rule [family] [table] [chain] [position <position>] [matches (matches)] [statement]
+
+    Replaces rule at handle
+
+    nft replace rule [family] [table] [chain] [handle <handle>] [matches (matches)] [statement]
+
+    Deletes rule at handle
+
+    nft delete rule [family] [table] [chain] [handle <handle>]
+
+sudo nft add chain <family> 
+sudo nft add chain ip Wev Input { type filter hook input priority 0}
+
+```
+
 </details>
