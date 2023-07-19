@@ -1432,4 +1432,26 @@ iptables -t nat -A POSTROUTING -p tcp -o eth0 -j SNAT --to 1.1.1.1:9001
 ![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/af276564-00d0-437c-8898-34d69fc2b17b)
 iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080
 
+## NAT DEMO
+```shell
+	nft add table ip NAT
+	nft add chain ip NAT POSTROUTING {type nat hook postrouting priority 100 \; }
+```
+#### Source NAT
+```shell
+    nft add rule ip NAT POSTROUTING ip saddr 10.1.0.2 oif eth0 snat 144.15.60.11
+```
+#### Destination NAT
+```shell
+    nft add rule ip NAT PREROUTING iif eth0 tcp dport { 80, 443 } dnat 10.1.0.3
+```
+#### Source NAT w/ masquerade
+```shell
+    nft add rule ip NAT POSTROUTING ip saddr 10.1.0.0/24 oif eth0 masquerade
+```
+#### Destination NAT (port forwarding) with redirect
+```shell
+    nft add rule ip NAT PREROUTING tcp dport 80 redirect to 8080
+```
+
 </details>
