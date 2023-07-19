@@ -1282,3 +1282,61 @@ tcpdump -X icmp
     
   
   </details>
+
+# Network Traffic Filtering
+
+<details>
+
+## Applications
+	Filter traffic, block certain things
+ 		-emails, tools, only allow certain computers to access network, network traffic
+## Devices to Filter
+	Routers, Proxy Server, Switch, Pretty much at every layer
+
+## Filtering Concepts
+   	Whitelist -> Block all, must allow certain things
+    	vs
+     	Blacklist -> Allows all, must block certain things
+
+       	Network Device Operation Modes
+		Router -> everyone can see it
+  		Transparent -> Stealth mode for firewall
+## Filtering Concepts pt. 2
+	IDS -> Alarm
+ 	IPS -> Must be set up in line, should block things if working right
+  	Firewalls
+   		stateless -> Packets
+     		stateful -> track based of flags, the state of it
+ 		application -> filters on applications like emails
+## Traffic Directions
+	loc host -> remote vice versa, either inbound or outbound
+
+## Netfilter Framework
+	packet filter, stateless / stateful, NAT and PAT
+ 	Hook
+  		prerouting, input, forward, output, postrouting
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/1a6a0a15-5c04-4765-8a60-cca82c7f08a3)
+
+## Config IP Tables 
+	which IP Tables, need elivated privs, sudo 
+``` shell
+iptables -t [table] -A [chain] [rules] -j [action]
+
+Rules:
+
+-i or -o [iface]
+-s or -d [ip.add | network/mask]
+-p [protocol(in ipv4 header)]
+
+-m is used with:
+  state --state [state]
+  mac [--mac-source | --mac-destination] [mac]
+  tcp | udp [--dport | --sport] [port | port1:port2]
+  multiport [--sports | --dports | --ports]
+                [port1,[port2,[port3:port15]]]
+  bpf --bytecode [ 'bytecode' ]
+
+[action] - ACCEPT, REJECT, DROP
+```
+
+</details>
