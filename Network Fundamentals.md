@@ -1412,5 +1412,24 @@ accept before flush
 	sudo nft flush ruleset, sudo nft flush table ip Wev
 	sudo nft list ruleset 
 ```
+## NAT & PAT 
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/c3f9bb21-427d-48b2-aeff-104b77f0128b)
+
+### Source NAT W/ IPTABLES
+
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/4bb8ebe8-18e4-457e-9e16-7a51f017cbf9)
+iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to 1.1.1.1
+
+### Destination NAT W/ IPTABLEs
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/05bff57d-661a-4efe-a1f0-5d1f004716ca)
+iptables -t nat -A PREROUTING -i eth0 -j DNAT --to 10.0.0.1
+
+### Source PAT W/ IPTABLES
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/92e67e3a-a33f-4a3c-8e22-8a188ec03dc9)
+iptables -t nat -A POSTROUTING -p tcp -o eth0 -j SNAT --to 1.1.1.1:9001
+
+### Destination PAT W/ IPTABLES
+![image](https://github.com/HassettJM2002/Network-Fundamentals/assets/134302854/af276564-00d0-437c-8898-34d69fc2b17b)
+iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080
 
 </details>
