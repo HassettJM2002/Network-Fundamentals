@@ -1339,4 +1339,27 @@ Rules:
 [action] - ACCEPT, REJECT, DROP
 ```
 
+## IP Tables Demo
+	sudo iptables -t <table> -L (list)
+ 	-F -> flush, does not change default policy
+  	-A <chain> -p <layer4protocol> --dport <port> -j <action> -> add rule, input or output chains
+   	
+```shell
+Allow SSH
+	sudo iptables -F
+	sudo iptables -A INPUT -p tcp --dport22 -j ACCEPT
+	sudo iptables -A OUTPUT -p tcp --src22 -j ACCEPT
+	sudo iptables -L
+	sudo iptables -A INPUT -p tcp --sport22 -j ACCEPT
+	sudo iptables -A sudo -p tcp --dport22 -j ACCEPT
+
+Drop all INput
+	sudo iptables -A INPUT -j DROP
+
+Allow X11 Forwarding (Terminator)
+	sudo iptables -A INPUT -p tcp -m multiport --ports 6010,6011,6012 -j ACCEPT
+	sudo iptables -A OUTPUT -p tcp -m multiport --ports 6010,6011,6012 -j ACCEPT
+
+	
+```
 </details>
