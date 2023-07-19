@@ -1465,4 +1465,34 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080
  	
  	
   	sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED -m multiport --ports 22,23,3389 -j ACCEPT
+
+##### Task 2
+input
+type filter hook input priority 0; policy accept;
+		tcp sport { 22, 23, 3389 } ct state { established, new } accept # handle 12
+		tcp dport { 22, 23, 3389 } ct state { established, new } accept # handle 15
+		icmp code 8 ip saddr 10.10.0.40 accept # handle 29
+		icmp code 0 ip saddr 10.10.0.40 accept # handle 30
+		tcp sport { 5050, 5150 } accept # handle 32
+		tcp dport { 5050, 5150 } accept # handle 34
+		udp sport { 5050, 5150 } accept # handle 36
+		udp dport { 5050, 5150 } accept # handle 38
+		tcp sport { 80 } ct state { established, new } accept # handle 49
+		tcp dport { 80 } ct state { established, new } accept # handle 52
+
+
+output
+type filter hook input priority 0; policy accept;
+		tcp sport { 22, 23, 3389 } ct state { established, new } accept # handle 19
+		tcp dport { 22, 23, 3389 } ct state { established, new } accept # handle 22
+		icmp code 8 ip daddr 10.10.0.40 accept # handle 26
+		icmp code 0 ip daddr 10.10.0.40 accept # handle 28
+		tcp sport { 5050, 5150 } accept # handle 40
+		tcp dport { 5050, 5150 } accept # handle 42
+		udp sport { 5050, 5150 } accept # handle 44
+		udp dport { 5050, 5150 } accept # handle 46
+		tcp sport { 80 } ct state { established, new } accept # handle 55
+		tcp dport { 80 } ct state { established, new } accept # handle 58
+
+
 </details>
