@@ -1461,11 +1461,18 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080
 <details>
 
 ##### Task 1
-	sudo iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -m multiport --ports 22,23,3389 -j ACCEPT
- 	
- 	
-  	sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED -m multiport --ports 22,23,3389 -j ACCEPT
-
+	sudo iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -m multiport --ports 22,23,3389,80 -j ACCEPT
+ 	sudo iptables -P OUTPUT DROP
+	sudo iptables -A OUTPUT -p ICMP --icmp-type 0 -j ACCEPT
+	sudo iptables -A OUTPUT -p ICMP --icmp-type 8 -j ACCEPT
+ 
+	sudo iptables -P FORWARD DROP
+  
+  	sudo iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED -m multiport --ports 22,23,3389,80 -j ACCEPT
+	sudo iptables -P INPUT DROP
+ 	sudo iptables -A INPUT -p ICMP --icmp-type 0 -j ACCEPT
+	sudo iptables -A INPUT -p ICMP --icmp-type 8 -j ACCEPT
+ 
 ##### Task 2
 	input
 		type filter hook input priority 0; policy accept;
