@@ -1556,7 +1556,14 @@ log files are pcaps of packets that triggered rule
 	cat /var/log/snort/alert
 	sudo tcpdump -r /var/log/snort/snort.log.1689858894
 ```
- 
+ ## Task 3
+ <details>
+
+## ICMP3
+	data.data contains de:ad:be:ef
+## ICMP4
+  
+ </details>
 </details>
 </details>
 
