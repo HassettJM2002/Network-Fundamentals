@@ -1501,5 +1501,63 @@ iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT --to 10.0.0.1:8080
 		tcp sport { 80 } ct state { established, new } accept # handle 55
 		tcp dport { 80 } ct state { established, new } accept # handle 58
 
+## Final Task
+	467accfb25050296431008a1357eacb1_9f7a33941828bdafd2755fd20176cdf4_05e5fb96e2a117e01fc1227f1c4d664c
+	953e720e688941b15b72c098022c51c3
 
+ 	0c2ca80fad4accccce3bcecec1d238ce_be33fe60229f8b8ee22931a3820d30ac
 </details>
+
+## Network Traffic Filter
+<details>
+
+## SNORT IDS/IPS Rule - Header
+```shell
+[action] [protocol] [s.ip] [s.port] [direction] [d.ip] [d.port] ( match conditions ;)
+```
+	Action - alert / log / pass / drop / reject
+	Protocol
+	Source IP address[es], Source Port - port[s]
+	Direction - inbound/outbound
+	Destination IP address[es],Destination port[s]
+## Snort match condition
+	Snort IDS/IPS General rule options:
+ 	msg - human-readable alert 
+	reference - links to source
+	sid - used to uniquely identify Snort rules
+	rev - uniquely identify revisions of Snort rules
+	Classtype - describe what a successful attack dooes
+	priority - level of concern
+ 	metadata - information about the rule
+## Snort IDS/IPS Payload detection options:
+    content - looks for a string of text.
+	content:"string"
+    |binary data| - to look for a string of binary HEX
+	content:"HEXHEX"
+    nocase - modified content
+    depth - how many bytes in does it look
+    distance - how far into a packet 
+    within - modifier that makes sure that at most N bytes are between pattern matches using the content keyword
+    offset - skips a certain number of bytes before searching (i.e. offset: 12)
+## Detection Option
+	Flow of trafic, TTL, TOS, IPOPTS
+
+## SNORT DEMO
+<details>
+
+```shell
+	export EDITOR=/usr/bin/vim
+	sudoedit /etc/snortrules/rules/example.rules
+"write rules"
+	snort -V
+	sudo snort -D -l /var/log/snort/ -c /etc/snort/snort.conf
+	ps -elf | grep snort | grep -v grep
+log files are pcaps of packets that triggered rule
+	cat /var/log/snort/alert
+	sudo tcpdump -r /var/log/snort/snort.log.1689858894
+```
+ 
+</details>
+</details>
+
+
